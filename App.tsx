@@ -1,0 +1,41 @@
+import * as React from 'react';
+import {Text, View, StyleSheet} from 'react-native';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+import TabNavigator from './src/navigators/TabNavigator';
+import MovieDetailScreen from './src/screens/MovieDetailScreen';
+import SeatBookingScreen from './src/screens/SeatBookingScreen';
+
+const Stack = createNativeStackNavigator();
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen
+          options={{animation: 'default'}}
+          name="Tab"
+          component={TabNavigator}
+        />
+        <Stack.Screen
+          name="MovieDetail"
+          component={MovieDetailScreen}
+          options={{animation: 'slide_from_right'}}
+        />
+        <Stack.Screen
+          name="SeatBooking"
+          component={SeatBookingScreen}
+          options={{animation: 'slide_from_bottom'}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;
+
+const styles = StyleSheet.create({
+  container: {},
+});
